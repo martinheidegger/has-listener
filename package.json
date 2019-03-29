@@ -1,0 +1,38 @@
+{
+  "name": "has-listener",
+  "version": "1.0.0",
+  "description": "Handler that is triggered when a listener is added to an event.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "standard",
+    "test:unit": "tap test.js",
+    "test:ci": "npm run test:lint && npm run test:unit -- --cov --coverage-report=lcov",
+    "release": "standard-version"
+  },
+  "keywords": [
+    "events",
+    "eventemitter",
+    "handler"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "author": "Martin Heidegger <martin.heidegger@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^11.12.0",
+    "standard": "^12.0.1",
+    "standard-version": "^5.0.2",
+    "tap": "^12.6.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinheidegger/has-listener.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martinheidegger/has-listener/issues"
+  },
+  "homepage": "https://github.com/martinheidegger/has-listener#readme"
+}
