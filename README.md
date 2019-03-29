@@ -1,5 +1,10 @@
 # has-listener
 
+<a href="https://travis-ci.org/martinheidegger/has-listener"><img src="https://travis-ci.org/martinheidegger/has-listener.svg?branch=master" alt="Build Status"/></a>
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Maintainability](https://api.codeclimate.com/v1/badges/fe7f58777d60b93f2e42/maintainability)](https://codeclimate.com/github/martinheidegger/has-listener/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fe7f58777d60b93f2e42/test_coverage)](https://codeclimate.com/github/martinheidegger/has-listener/test_coverage)
+
 `has-listener` is a little util, useful in combination with [`EventEmitter`][events].
 It allows to do some operation only if an event listener is added to an emitter.
 
