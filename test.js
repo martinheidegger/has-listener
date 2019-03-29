@@ -1,7 +1,7 @@
 'use strict'
 const test = require('tap').test
-const { EventEmitter } = require('events')
-const { hasListener } = require('.')
+const EventEmitter = require('events').EventEmitter
+const hasListener = require('.').hasListener
 
 test('Basic functionality', t => {
   const emitter = new EventEmitter()
