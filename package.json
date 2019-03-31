@@ -1,6 +1,6 @@
 {
   "name": "has-listener",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Handler that is triggered when a listener is added to an event.",
   "main": "index.js",
   "scripts": {
