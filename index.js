@@ -1,17 +1,17 @@
 'use strict'
 
-function createCounter (targetEvent, count, handler) {
+function createCounter (targetEvents, count, handler) {
   handler(count > 0)
   return {
     up (event) {
-      if (event !== targetEvent) return
+      if (!targetEvents.has(event)) return
       count += 1
       if (count === 1) {
         handler(true)
       }
     },
     down (event) {
-      if (event !== targetEvent) return
+      if (!targetEvents.has(event)) return
       count -= 1
       if (count === 0) {
         handler(false)
@@ -20,9 +20,22 @@ function createCounter (targetEvent, count, handler) {
   }
 }
 
-exports.hasListener = function hasListener (target, targetEvent, handler) {
-  let counter = createCounter(targetEvent, target.listenerCount(targetEvent), handler)
-  target.listenerCount(targetEvent)
+function countListeners (target, targetEvents) {
+  let count = 0
+  for (const targetEvent of targetEvents) {
+    count += target.listenerCount(targetEvent)
+  }
+  return count
+}
+
+exports.hasListener = function hasListener (target, targetEvents, handler) {
+  if (!(targetEvents instanceof Set)) {
+    if (!Array.isArray(targetEvents)) {
+      targetEvents = [targetEvents]
+    }
+    targetEvents = new Set(targetEvents)
+  }
+  let counter = createCounter(targetEvents, countListeners(target, targetEvents), handler)
   target.on('newListener', counter.up)
   target.on('removeListener', counter.down)
 

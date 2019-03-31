@@ -30,3 +30,23 @@ test('Basic functionality', t => {
   t.equals(count, 4, 'after stopping the trigger shouldnt be called')
   t.end()
 })
+
+test('multiple events', t => {
+  const emitter = new EventEmitter()
+  let active = null
+  hasListener(emitter, ['a', 'b'], isActive => {
+    active = isActive
+  })
+  t.equals(active, false, 'no listener yet!')
+  emitter.on('a', () => {})
+  t.equals(active, true, 'one listener is enough')
+  emitter.removeAllListeners('a')
+  t.equals(active, false, 'but one is needed!')
+  emitter.on('b', () => {})
+  t.equals(active, true, 'the other listener also works')
+  emitter.on('a', () => {})
+  t.equals(active, true, 'two listeners work as well')
+  t.removeAllListeners('b')
+  t.equals(active, true, 'back to one, still okay!')
+  t.end()
+})
